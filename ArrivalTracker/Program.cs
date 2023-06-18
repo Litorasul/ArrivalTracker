@@ -12,9 +12,12 @@ var connectionString = builder.Configuration.GetConnectionString("Default") ?? t
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddDbContextFactory<ArrivalsDbContext>((DbContextOptionsBuilder options) => options.UseSqlServer(connectionString));
+
 builder.Services.AddTransient<IRoleDataAccessService, RoleDataAccessService>();
 builder.Services.AddTransient<ITeamDataAccessService, TeamDataAccessService>();
 builder.Services.AddTransient<IEmployeeDataAccessService, EmployeeDataAccessService>();
+builder.Services.AddTransient<IArrivalTimeDataAccessService, ArrivalTimeDataAccessService>();
+
 builder.Services.AddSingleton<WeatherForecastService>();
 
 var app = builder.Build();
