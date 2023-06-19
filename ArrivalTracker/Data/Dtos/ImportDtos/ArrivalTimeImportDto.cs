@@ -3,5 +3,5 @@
 public class ArrivalTimeImportDto
 {
     public int EmployeeId { get; set; }
-    public DateTime Arrival { get; set; }
+    public DateTime When { get; set; }
 }

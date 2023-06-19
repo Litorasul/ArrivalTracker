@@ -1,3 +1,4 @@
+using ArrivalTracker.BusinessLogicServices;
 using ArrivalTracker.Data;
 using ArrivalTracker.Data.Seeding;
 using ArrivalTracker.DataAccessServices;
@@ -17,6 +18,12 @@ builder.Services.AddTransient<IRoleDataAccessService, RoleDataAccessService>();
 builder.Services.AddTransient<ITeamDataAccessService, TeamDataAccessService>();
 builder.Services.AddTransient<IEmployeeDataAccessService, EmployeeDataAccessService>();
 builder.Services.AddTransient<IArrivalTimeDataAccessService, ArrivalTimeDataAccessService>();
+builder.Services.AddScoped<ISubscribeBusinessLogicService, SubscribeBusinessLogicService>();
+builder.Services.AddHttpClient<ISubscribeBusinessLogicService, SubscribeBusinessLogicService>(client =>
+{
+    client.DefaultRequestHeaders.Add("Accept-Client", "Fourth-Monitor");
+});
+builder.Services.AddControllers();
 
 builder.Services.AddSingleton<WeatherForecastService>();
 
@@ -45,6 +52,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.MapControllers();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 

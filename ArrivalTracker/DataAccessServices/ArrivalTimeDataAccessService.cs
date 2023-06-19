@@ -17,7 +17,7 @@ public class ArrivalTimeDataAccessService : IArrivalTimeDataAccessService
         var arrivalTime = new ArrivalTime
         {
             EmployeeId = arrivalTimeImportDto.EmployeeId,
-            Arrival = arrivalTimeImportDto.Arrival
+            Arrival = arrivalTimeImportDto.When
         };
         await _context.ArrivalTimes.AddAsync(arrivalTime);
         await _context.SaveChangesAsync();

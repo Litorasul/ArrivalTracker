@@ -1,4 +1,5 @@
 ﻿using ArrivalTracker.Data.Seeding.Seeders;
+using ArrivalTracker.DataAccessServices;
 
 namespace ArrivalTracker.Data.Seeding;
 
@@ -19,7 +20,8 @@ public class ApplicationDbContextSeeder
             var seeders = new List<ISeeder>
             {
                 new RolesSeeder(),
-                new TeamsSeeder()
+                new TeamsSeeder(),
+                new EmployeesSeeder()
             };
 
             foreach (var seeder in seeders)

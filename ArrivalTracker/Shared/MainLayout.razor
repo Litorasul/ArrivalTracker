@@ -1,4 +1,6 @@
-﻿@inherits LayoutComponentBase
+﻿@using ArrivalTracker.BusinessLogicServices;
+@inherits LayoutComponentBase
+@inject ISubscribeBusinessLogicService subscriberService
 
 <PageTitle>ArrivalTracker</PageTitle>
 
@@ -17,3 +19,11 @@
         </article>
     </main>
 </div>
+
+@code {
+    protected override Task OnInitializedAsync()
+    {
+        subscriberService.SubscribeToFourthArrivalService();
+        return base.OnInitializedAsync();
+    }
+}

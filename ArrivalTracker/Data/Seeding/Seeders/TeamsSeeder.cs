@@ -9,6 +9,10 @@ public class TeamsSeeder : ISeeder
     public const string TeamsJsonPath = @"../ArrivalTracker/Data/Seeding/JsonData/Teams.json";
     public void Seed(ArrivalsDbContext dbContext, IServiceProvider serviceProvider)
     {
+        if (dbContext.Teams.Any())
+        {
+            return;
+        }
         var inputJson = File.ReadAllText(TeamsJsonPath);
         var teamsToImport = JsonConvert.DeserializeObject<List<TeamsImportDto>>(inputJson);
 

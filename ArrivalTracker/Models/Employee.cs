@@ -11,8 +11,7 @@ public class Employee
     public string Name { get; set; }
     [Required(ErrorMessage = "Surname is required.")]
     public string SurName { get; set; }
-    [Required(ErrorMessage = "Email is required.")]
-    public string Email { get; set; }
+    public string? Email { get; set; }
     [ForeignKey("Role")]
     public int RoleId { get; set; }
     [ForeignKey("Employee")]
